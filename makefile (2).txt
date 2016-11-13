@@ -1,0 +1,18 @@
+main: main.o Truck_Driver.o Assembler.o Manager.o Foreperson.o Hourly.o Salaried.o InsideSales.o Sales.o Employee.o Short_String.o Payroll.o
+	g++ -pedantic main.o Truck_Driver.o Assembler.o Manager.o Foreperson.o Hourly.o Salaried.o InsideSales.o Sales.o Employee.o Short_String.o Payroll.o -lm -o main
+main.o: main.cpp Truck_Driver.o Assembler.o Manager.o Foreperson.o Hourly.o Salaried.o InsideSales.o Sales.o Employee.o Short_String.o Payroll.o
+	g++ -Wall -pedantic main.cpp -c
+Payroll.o: Payroll.cpp Payroll.h Truck_Driver.o Assembler.o Manager.o Foreperson.o Employee.o Short_String.o
+	g++ -Wall -pedantic Payroll.cpp -c
+Truck_Driver.o: Truck_Driver.cpp Truck_Driver.h Hourly.o Employee.o Short_String.o
+	g++ -Wall -pedantic Truck_Driver.cpp -c
+Assembler.o: Assembler.cpp Assembler.h Hourly.o Employee.o Short_String.o
+	g++ -Wall -pedantic Assembler.cpp -c
+Manager.o: Manager.cpp Manager.h Salaried.o Employee.o Short_String.o
+	g++ -Wall -pedantic Manager.cpp -c
+Foreperson.o: Foreperson.cpp Foreperson.h Salaried.o Employee.o Short_String.o
+	g++ -Wall -pedantic Foreperson.cpp -c
+Hourly.o: Hourly.cpp Hourly.h Employee.o Short_String.o
+	g++ -Wall -pedantic Hourly.cpp -c 
+Salaried.o: Salaried.cpp Salaried.h Employee.o Short_String.o
+	g++ -Wall -pedantic Salaried.cpp -c
